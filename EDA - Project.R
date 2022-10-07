@@ -47,7 +47,7 @@ Table2<- Table2%>%
 Table2<- Table2[!(Table2$Publication.Year ==2018),] 
 
 #Create a Line Chart for the development of the Number of Reports 
-#Historical development of GRI submitted files per region & total view of the trend.
+#Historical development of CSR submitted files per region & total view of the trend.
 ggplot(data=Table2,mapping = aes(x=Publication.Year))+
   geom_line(mapping = aes(y=Asia,group =1, color="Asia"))+
   geom_point(mapping = aes(y=Asia,group =1,color="Asia"))+
@@ -68,17 +68,17 @@ ggplot(data=Table2,mapping = aes(x=Publication.Year))+
   labs(x="Year",y="Number of Reports")
 
 #### Creating a map plot with the amount of submitted files
-#Map Plot of the the countries that have submitted GRI files throught whole period.
+#Map Plot of the the countries that have submitted CSR files through whole period.
 
 install.packages("tidyverse")
-#insert mapdata data frame so we can create the mapplot
+#insert map data data frame so we can create the map plot
 mapdata<- map_data("world")
 
 Table3 <- data1%>%group_by(Country)%>% summarize(Name = n())
 
 colnames(Table3)[colnames(Table3)=="Country"]<-"region"
 
-#change the naming of some of the counties in our data frame to mach the mapdata data frame 
+#change the naming of some of the counties in our data frame to mach the map data data frame 
 Table3$region <- replace(Table3$region, Table3$region=="United States of America", "USA")
 Table3$region <- replace(Table3$region, Table3$region=="Mainland China", "China")
 Table3$region <- replace(Table3$region, Table3$region=="Hong Kong", "China")
@@ -111,7 +111,7 @@ map2 <-map1+scale_fill_gradient(name="Total Nr. of Submissions", low = "white",h
 map2
 
 #Create a Bar Chart with the amount of report submitted per each region and Organization size
-#Bar Chart of the CSR reports per Organization Size per Region.
+#Small Multiple Barchart of the CSR reports per Organization Size per Region.
 ggplot(data1, aes(Size)) + 
   geom_bar(fill = "#0a9396") +
   theme(axis.text.x = element_text(angle = 40, vjust = 0.6, hjust=0.7, size = 6))+
@@ -149,7 +149,7 @@ ggplot(Table4, aes(x="", y=Per, fill=Size)) +
   scale_fill_brewer(palette="Greens",name = "Organization Size")
 
 #### Create bar chart based to country Status
-#Bar chart of the CSR report per Country status throw-out the years and worldwide.
+#Barchart of the CSR report per Country status throw-out the years and worldwide.
 ggplot(data1, aes(Country.Status)) + 
   geom_bar(fill = "#0a9396") +
   theme(axis.text.x = element_text(angle = 40, vjust = 0.6, hjust=0.7, size = 6))+
