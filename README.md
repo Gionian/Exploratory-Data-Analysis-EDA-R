@@ -8,22 +8,22 @@ install.packages("ggplot2")
 library(ggplot2)
 ```
 
-After loading the data from the excel file `read.xlsx()`, data preparation and cleaning were performed in order to facilitate analysis. This included making all NA values to 0 `df[is.na(df)]<-0` and from the column titles and some item renaming.
+After loading the data from the excel file `read.xlsx()`, data preparation and cleaning was performed in order to facilitate analysis. This included making all NA values to 0 `df[is.na(df)]<-0` and changing column titles and some item renaming.
 
-For a more thorough evaluation To produce a more focused analysis, the functions `groupby()` and `pivot wider()` are employed.
+For a more thorough evaluation to produce a more focused analysis, the functions `groupby()` and `pivot wider()` are employed.
 
 
-Plot with multiple Lines. 
+Line Plot with multiple Lines using The functions `geom_line()`, `geom_point()`. 
 
 &nbsp;&nbsp;&nbsp;&nbsp;*Picture 1. Historical development of CSR submitted files per region & total view of the trend.*
 ![image](Images/Line%20Plot.png)
 
 Small multiple can be used as an alternative of stacking or grouping. It is straightforward to make thanks to the  `facet_wrap()` function.
 
-&nbsp;&nbsp;&nbsp;&nbsp;*Picture 2. Small Multiple Barchart of the CSR reports per Organization Size per Region.*
+&nbsp;&nbsp;&nbsp;&nbsp;*Picture 2. Barchart of the CSR reports per Organization Size per Region.*
 ![image](Images/Group%20Bar%20Chart.png)
 
-After importing the data set of the world map to join `left_join()` with our dataset to manage the creation of the map plot  
+After importing the data set of the world map to join `left_join()` with our dataset to manage the creation of the map plot.  
 
 ```
 mapdata<- map_data("world")
@@ -37,7 +37,7 @@ No particular geom is provided by ggplot2 to construct piecharts. The following 
 &nbsp;&nbsp;&nbsp;&nbsp;-build a stacked barchart with one bar only using the `geom_bar()` function.  
 &nbsp;&nbsp;&nbsp;&nbsp;-Make it circular with `coord_polar()`  
 
-&nbsp;&nbsp;&nbsp;&nbsp;*Pictures 4. Pie Chart of the Proportion of the Reports submitted based to Organization size*
+&nbsp;&nbsp;&nbsp;&nbsp;*Pictures 4. Proportion of the Reports submitted based to Organization size*
 ![image](Images/Pie%20Chart.png)
 
 A simple Barchart using `geom_bar()`. 
